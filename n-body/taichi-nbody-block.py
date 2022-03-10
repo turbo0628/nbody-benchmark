@@ -23,7 +23,7 @@ def run_nbody(nBodies):
         for i in range(nBodies):
             Fx = 0.0
             Fy = 0.0
-            Fz = 0.0;
+            Fz = 0.0
             for j in range(nBodies):
                 vec = ti.Vector([0.0, 0.0, 0.0])
                 dx = bodies[j, 0] - bodies[i, 0]
