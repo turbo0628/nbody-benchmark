@@ -20,6 +20,7 @@ def run_nbody(nBodies):
 
     @ti.kernel
     def bodyForce():
+        ti.block_dim(256)
         for i in range(nBodies):
             Fx = 0.0
             Fy = 0.0
