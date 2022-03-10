@@ -1,0 +1,172 @@
+
+Fatbin elf code:
+================
+arch = sm_30
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin elf code:
+================
+arch = sm_30
+code version = [1,7]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+
+Fatbin ptx code:
+================
+arch = sm_30
+code version = [6,4]
+producer = <unknown>
+host = linux
+compile_size = 64bit
+compressed
+ptxasOptions = 
+
+
+
+
+
+
+
+
+.version 6.4
+.target sm_30
+.address_size 64
+
+
+
+.visible .entry _Z9bodyForceP6float4S0_fi(
+.param .u64 _Z9bodyForceP6float4S0_fi_param_0,
+.param .u64 _Z9bodyForceP6float4S0_fi_param_1,
+.param .f32 _Z9bodyForceP6float4S0_fi_param_2,
+.param .u32 _Z9bodyForceP6float4S0_fi_param_3
+)
+{
+.reg .pred %p<5>;
+.reg .f32 %f<119>;
+.reg .b32 %r<19>;
+.reg .b64 %rd<14>;
+
+
+ld.param.u64 %rd6, [_Z9bodyForceP6float4S0_fi_param_0];
+ld.param.u64 %rd5, [_Z9bodyForceP6float4S0_fi_param_1];
+ld.param.f32 %f16, [_Z9bodyForceP6float4S0_fi_param_2];
+ld.param.u32 %r7, [_Z9bodyForceP6float4S0_fi_param_3];
+cvta.to.global.u64 %rd1, %rd6;
+mov.u32 %r8, %ctaid.x;
+mov.u32 %r9, %ntid.x;
+mov.u32 %r10, %tid.x;
+mad.lo.s32 %r1, %r8, %r9, %r10;
+setp.ge.s32	%p1, %r1, %r7;
+@%p1 bra BB0_7;
+
+mov.u32 %r2, %nctaid.x;
+setp.eq.s32	%p2, %r2, 0;
+mov.f32 %f113, 0f00000000;
+mov.f32 %f114, %f113;
+mov.f32 %f115, %f113;
+@%p2 bra BB0_6;
+
+mul.wide.s32 %rd7, %r1, 16;
+add.s64 %rd2, %rd1, %rd7;
+mov.f32 %f113, 0f00000000;
+mov.u32 %r17, 0;
+mov.f32 %f114, %f113;
+mov.f32 %f115, %f113;
+
+BB0_3:
+ld.global.v4.f32 {%f23, %f24, %f25, %f26}, [%rd2];
+mov.u32 %r18, -128;
+mov.u64 %rd13, %rd1;
+
+BB0_4:
+ld.global.v4.f32 {%f27, %f28, %f29, %f30}, [%rd13];
+sub.ftz.f32 %f34, %f27, %f23;
+sub.ftz.f32 %f35, %f28, %f24;
+sub.ftz.f32 %f36, %f29, %f25;
+mul.ftz.f32 %f37, %f35, %f35;
+fma.rn.ftz.f32 %f38, %f34, %f34, %f37;
+fma.rn.ftz.f32 %f39, %f36, %f36, %f38;
+add.ftz.f32 %f40, %f39, 0f3089705F;
+rsqrt.approx.ftz.f32 %f41, %f40;
+mul.ftz.f32 %f42, %f41, %f41;
+mul.ftz.f32 %f43, %f41, %f42;
+fma.rn.ftz.f32 %f44, %f34, %f43, %f115;
+fma.rn.ftz.f32 %f45, %f35, %f43, %f114;
+fma.rn.ftz.f32 %f46, %f36, %f43, %f113;
+ld.global.v4.f32 {%f47, %f48, %f49, %f50}, [%rd13+16];
+sub.ftz.f32 %f54, %f47, %f23;
+sub.ftz.f32 %f55, %f48, %f24;
+sub.ftz.f32 %f56, %f49, %f25;
+mul.ftz.f32 %f57, %f55, %f55;
+fma.rn.ftz.f32 %f58, %f54, %f54, %f57;
+fma.rn.ftz.f32 %f59, %f56, %f56, %f58;
+add.ftz.f32 %f60, %f59, 0f3089705F;
+rsqrt.approx.ftz.f32 %f61, %f60;
+mul.ftz.f32 %f62, %f61, %f61;
+mul.ftz.f32 %f63, %f61, %f62;
+fma.rn.ftz.f32 %f64, %f54, %f63, %f44;
+fma.rn.ftz.f32 %f65, %f55, %f63, %f45;
+fma.rn.ftz.f32 %f66, %f56, %f63, %f46;
+ld.global.v4.f32 {%f67, %f68, %f69, %f70}, [%rd13+32];
+sub.ftz.f32 %f74, %f67, %f23;
+sub.ftz.f32 %f75, %f68, %f24;
+sub.ftz.f32 %f76, %f69, %f25;
+mul.ftz.f32 %f77, %f75, %f75;
+fma.rn.ftz.f32 %f78, %f74, %f74, %f77;
+fma.rn.ftz.f32 %f79, %f76, %f76, %f78;
+add.ftz.f32 %f80, %f79, 0f3089705F;
+rsqrt.approx.ftz.f32 %f81, %f80;
+mul.ftz.f32 %f82, %f81, %f81;
+mul.ftz.f32 %f83, %f81, %f82;
+fma.rn.ftz.f32 %f84, %f74, %f83, %f64;
+fma.rn.ftz.f32 %f85, %f75, %f83, %f65;
+fma.rn.ftz.f32 %f86, %f76, %f83, %f66;
+ld.global.v4.f32 {%f87, %f88, %f89, %f90}, [%rd13+48];
+sub.ftz.f32 %f94, %f87, %f23;
+sub.ftz.f32 %f95, %f88, %f24;
+sub.ftz.f32 %f96, %f89, %f25;
+mul.ftz.f32 %f97, %f95, %f95;
+fma.rn.ftz.f32 %f98, %f94, %f94, %f97;
+fma.rn.ftz.f32 %f99, %f96, %f96, %f98;
+add.ftz.f32 %f100, %f99, 0f3089705F;
+rsqrt.approx.ftz.f32 %f101, %f100;
+mul.ftz.f32 %f102, %f101, %f101;
+mul.ftz.f32 %f103, %f101, %f102;
+fma.rn.ftz.f32 %f115, %f94, %f103, %f84;
+fma.rn.ftz.f32 %f114, %f95, %f103, %f85;
+fma.rn.ftz.f32 %f113, %f96, %f103, %f86;
+add.s64 %rd13, %rd13, 64;
+add.s32 %r18, %r18, 4;
+setp.ne.s32	%p3, %r18, 0;
+@%p3 bra BB0_4;
+
+bar.sync 0;
+add.s32 %r17, %r17, 1;
+setp.lt.u32	%p4, %r17, %r2;
+@%p4 bra BB0_3;
+
+BB0_6:
+cvta.to.global.u64 %rd8, %rd5;
+mul.wide.s32 %rd9, %r1, 16;
+add.s64 %rd10, %rd8, %rd9;
+mul.ftz.f32 %f104, %f115, %f16;
+atom.global.add.f32 %f105, [%rd10], %f104;
+st.global.f32 [%rd10], %f105;
+add.s64 %rd11, %rd10, 4;
+mul.ftz.f32 %f106, %f114, %f16;
+atom.global.add.f32 %f107, [%rd11], %f106;
+st.global.f32 [%rd10+4], %f107;
+add.s64 %rd12, %rd10, 8;
+mul.ftz.f32 %f108, %f113, %f16;
+atom.global.add.f32 %f109, [%rd12], %f108;
+st.global.f32 [%rd10+8], %f109;
+
+BB0_7:
+ret;
+}
+
+
